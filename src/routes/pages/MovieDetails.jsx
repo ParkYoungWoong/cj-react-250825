@@ -1,10 +1,12 @@
 // http://localhost:5173/movies/tt1877830
-import { useParams } from 'react-router'
+import { useParams, useNavigate } from 'react-router'
 import { useState, useEffect } from 'react'
 import Loader from '@/components/Loader.jsx'
+import Modal from '@/components/Modal.jsx'
 
 export default function MovieDetails() {
   const { movieId } = useParams()
+  const navigate = useNavigate()
   const [movie, setMovie] = useState()
   const [isLoading, setIsLoading] = useState(true)
 
@@ -20,7 +22,10 @@ export default function MovieDetails() {
   }
 
   return (
-    <>
+    <Modal
+      offModal={() => {
+        navigate('/movies')
+      }}>
       {movie && (
         <div>
           <h1>{movie.Title}</h1>
@@ -32,6 +37,6 @@ export default function MovieDetails() {
         </div>
       )}
       {isLoading && <Loader fixed />}
-    </>
+    </Modal>
   )
 }

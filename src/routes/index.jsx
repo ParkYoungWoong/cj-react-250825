@@ -5,6 +5,8 @@ import About from './pages/About.jsx'
 import SignIn from './pages/SignIn.jsx'
 import Movies from './pages/Movies.jsx'
 import MovieDetails from './pages/MovieDetails.jsx'
+import NotFound from './pages/NotFound.jsx'
+import { requiresAuth, guestOnly } from './loaders'
 
 const router = createBrowserRouter([
   {
@@ -20,11 +22,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/signin', // http://localhost:5173/signin
-        element: <SignIn />
+        element: <SignIn />,
+        loader: guestOnly
       },
       {
         path: '/movies',
         element: <Movies />,
+        loader: requiresAuth,
         children: [
           {
             path: '/movies/:movieId', // http://localhost:5173/movies/tt1877830
@@ -33,6 +37,10 @@ const router = createBrowserRouter([
         ]
       }
     ]
+  },
+  {
+    path: '*',
+    element: <NotFound />
   }
 ])
 
