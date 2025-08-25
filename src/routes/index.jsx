@@ -4,6 +4,7 @@ import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import SignIn from './pages/SignIn.jsx'
 import Movies from './pages/Movies.jsx'
+import MovieDetails from './pages/MovieDetails.jsx'
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/movies',
-        element: <Movies />
+        element: <Movies />,
+        children: [
+          {
+            path: '/movies/:movieId', // http://localhost:5173/movies/tt1877830
+            element: <MovieDetails />
+          }
+        ]
       }
     ]
   }
