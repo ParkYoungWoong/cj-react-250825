@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+
 .form {
   display: flex;
   flex-direction: column;
@@ -64,4 +66,13 @@
   color: white;
   line-height: 1;
   cursor: pointer;
+}
+
+header {
+  display: flex;
+  gap: 10px;
+}
+header a.active {
+  color: red;
+  font-weight: bold;
 }
