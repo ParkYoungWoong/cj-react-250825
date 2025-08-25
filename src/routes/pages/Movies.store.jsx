@@ -1,23 +1,16 @@
 import TextField from '@/components/TextField.jsx'
 import Button from '@/components/Button.jsx'
 import Loader from '@/components/Loader.jsx'
-import { useState } from 'react'
 import { Link, Outlet } from 'react-router'
+import { useMovieStore } from '@/stores/movie'
 
 export default function Movies() {
-  const [searchText, setSearchText] = useState('')
-  const [movies, setMovies] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-
-  async function fetchMovies() {
-    setIsLoading(true)
-    const res = await fetch(
-      `https://omdbapi.com?apikey=7035c60c&s=${searchText}`
-    )
-    const { Search } = await res.json()
-    setMovies(Search)
-    setIsLoading(false)
-  }
+  // useMovieStore(state => { return state.searchText })
+  const searchText = useMovieStore(state => state.searchText)
+  const setSearchText = useMovieStore(state => state.setSearchText)
+  const movies = useMovieStore(state => state.movies)
+  const isLoading = useMovieStore(state => state.isLoading)
+  const fetchMovies = useMovieStore(state => state.fetchMovies)
 
   return (
     <>
