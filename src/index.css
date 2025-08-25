@@ -27,6 +27,8 @@
   border-color: royalblue;
 }
 
+/* const name = 123 */
+
 .hloader {
   --hloader-color: #e96900;
   --hloader-size: 80px;
@@ -48,4 +50,18 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.btn {
+  height: 32px;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: royalblue;
+  color: white;
+  line-height: 1;
+  cursor: pointer;
 }
